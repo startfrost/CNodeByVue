@@ -1,6 +1,16 @@
 <template>
-  <div id="topic">
-    <div>{{ content }}</div>
+  <div id="topic" v-if="topic.id">
+    <div id="title">{{ topic.title }}</div>
+    <div id="topic-info">
+      <span>作者 {{ topic.author.loginname }}</span>
+      <span>{{ topic.visit_count }}次浏览</span>
+      <span>来自 {{ topic.tab }}</span>
+    </div>
+    <div id="content" v-html="topic.content"></div>
+    <div id="reply" v-for="reply of topic.replies" :key="reply.id">
+      <span>{{ reply.author.loginname }}</span>
+      <div v-html="reply.content"></div>
+    </div>
   </div>
 </template>
 
@@ -11,15 +21,14 @@ export default {
   name: "Topic",
   data() {
     return {
-      topicId: this.$route.params.id,
-      content: ""
+      topic: {}
     };
   },
   methods: {
     getTopicContent(id) {
       getTopic(id).then(
         result => {
-          this.content = result.data.data.content;
+          this.topic = result.data.data;
         },
         error => {
           console.log("出错了" + error);
@@ -28,7 +37,7 @@ export default {
     }
   },
   created() {
-    this.getTopicContent(this.topicId);
+    this.getTopicContent(this.$route.params.id);
   }
 };
 </script>
