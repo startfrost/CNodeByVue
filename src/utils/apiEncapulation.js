@@ -8,6 +8,14 @@ const getTopicItems = params => {
     });
 }
 
+const getTopic = id => {
+    return requestService({
+       url: "topic/" + id,
+       method: "get", 
+    });
+}
+
 export {
-    getTopicItems
+    getTopicItems,
+    getTopic
 }

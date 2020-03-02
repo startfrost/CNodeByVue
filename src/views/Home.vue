@@ -35,7 +35,6 @@ export default {
           console.log("出错了" + error);
         }
       );
-    //   console.log("test");
     }
   },
   created() {

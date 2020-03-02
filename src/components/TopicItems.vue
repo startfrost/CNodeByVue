@@ -11,7 +11,7 @@
       </a>
       <span class="count">{{ topic.reply_count }} / {{ topic.visit_count }}</span>
       <span class="tab">{{ topic.tab }}</span>
-      <span class="title">{{ topic.title }}</span>
+      <router-link class="title" :to="'/Topic/' + topic.id">{{ topic.title }}</router-link>
       <!-- <span class="time">
         {{ topic.create_at }}
       </span>-->
