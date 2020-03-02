@@ -1,19 +1,17 @@
 <template>
   <div id="app">
     <web-header />
-    <home />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import WebHeader from "./components/WebHeader.vue";
-import Home from "./views/Home.vue";
 
 export default {
   name: "App",
   components: {
-    WebHeader,
-    Home
+    WebHeader
   }
 };
 </script>
